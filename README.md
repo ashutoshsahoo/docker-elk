@@ -45,6 +45,8 @@ Based on the official Docker images from Elastic:
    * [How can I enable a remote JMX connection to a service?](#how-can-i-enable-a-remote-jmx-connection-to-a-service)
 7. [Updates](#updates)
    * [Using a newer stack version](#using-a-newer-stack-version)
+8. [Spring Boot](#springboot)
+   * [Configuration for Spring Boot application](#using-in-a-spring-boot-application)   
 
 ## Requirements
 
@@ -274,3 +276,11 @@ $ docker-compose up
 
 **NOTE**: Always pay attention to the [upgrade instructions](https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html)
 for each individual component before performing a stack upgrade.
+
+
+## Spring Boot
+
+### Configuration for Spring Boot application
+
+To use ELK sgtack in spring boot application, copy [logback-spring.xml](./logback-spring.xml) into `src/main/resources` directory.
+You need to set logstash IP in `application.properties` file e.g. `logging.logstash.host=192.168.99.100:5044`.
