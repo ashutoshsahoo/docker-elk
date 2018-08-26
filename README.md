@@ -282,5 +282,15 @@ for each individual component before performing a stack upgrade.
 
 ### Configuration for Spring Boot application
 
-To send logs from Spring Boot application to Logstash, copy [logback-spring.xml](./logback-spring.xml) into `src/main/resources` directory.
-You need to set Logstash url in `application.properties` file e.g. `logging.logstash.host=192.168.99.100:5044`.
+- Add the following dependency in `pom.xml`.
+```xml
+<dependency>
+	<groupId>net.logstash.logback</groupId>
+	<artifactId>logstash-logback-encoder</artifactId>
+	<version>5.2</version>
+</dependency>
+```
+- Copy [logback-spring.xml](./logback-spring.xml) into `src/main/resources` directory.
+- Add Logstash URL in `application.properties` file e.g. `logging.logstash.host=192.168.99.100:5044`.
+
+The `logback-spring.xml` should be configured as per the application requirements. More information can be found [here](https://github.com/logstash/logstash-logback-encoder).
