@@ -437,10 +437,19 @@ instead of `elasticsearch`.*
 </dependency>
 ```
 or  in `dependencies` section of `build.gradle`.
-```
+```groovy
 runtimeOnly 'net.logstash.logback:logstash-logback-encoder:6.4'
 ```
 - Copy [logback-spring.xml](./logback-spring.xml) into `src/main/resources` directory.
 - Add Logstash URL in `application.properties` file e.g. `logging.logstash.host=192.168.99.100:5044`.
-
+- Add following properties into `build.gradle`, for maven configuration refer [this](https://docs.spring.io/spring-boot/docs/1.4.1.RELEASE/reference/html/howto-build.html) page.
+```groovy
+plugins {
+    ...
+    id "com.gorylenko.gradle-git-properties" version "2.2.3"
+}
+springBoot {
+    buildInfo()
+}
+```
 The `logback-spring.xml` should be configured as per the application requirements. More information can be found [here](https://github.com/logstash/logstash-logback-encoder).
